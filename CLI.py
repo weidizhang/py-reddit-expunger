@@ -11,14 +11,16 @@ parser.add_argument("-i", "--id", help = "OAuth Client ID")
 parser.add_argument("-s", "--secret", help = "OAuth Client Secret")
 parser.add_argument("-v", "--verbose", dest = "verbose", action = "store_true", help = "Enable verbose mode")
 parser.add_argument("-c", "--limit", help = "Comment limit, default: 1000")
+parser.add_argument("-m", "--message", help = "New comment body")
 
-parser.set_defaults(verbose = False, limit = 1000)
+parser.set_defaults(verbose = False, limit = 1000, message = "Deleted")
 
 args = parser.parse_args()
 
 if (args.username is not None) and (args.password is not None) and (args.id is not None) and (args.secret is not None):
 	expunger = Expunger(args.username, args.password, args.id, args.secret)
 	expunger.setVerboseMode(args.verbose)
+	expunger.setDeleteMsg(args.message)
 	expunger.reddit.setCommentLimit(args.limit)
 
 	expunger.run()

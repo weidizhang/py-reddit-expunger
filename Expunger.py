@@ -34,9 +34,6 @@ class Expunger:
 	def setDeleteMsg(self, msg):
 		self.deleteMsg = msg
 
-	def setShouldDelete(self, value):
-		self.shouldDelete = value
-
 	def setVerboseMode(self, value):
 		self.verboseMode = value
 
